@@ -1,0 +1,7 @@
+.prac-exp-container {
+    /* display: flex;
+    flex-direction: column; */
+    background-color: antiquewhite;
+    height: 200px;
+    border: 1px solid blueviolet;
+}
