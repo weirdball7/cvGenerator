@@ -11,7 +11,7 @@ function EducationalExp() {
                     <h1>Education</h1>
                 </div>
                 <div className="edu-content-container">
-                    {!notShowing && Form()}
+                    {!notShowing && <Form />}
                 </div>
                 <button onClick={() => setShowForm(!notShowing)}>Edit</button>
             </div>
