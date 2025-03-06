@@ -5,6 +5,13 @@ import '../styles/General.css'
 
 function GeneralInfo() {
     const [notShowing, setShowForm] = useState(true)
+    const [generalData, setGeneralData] = useState([])
+
+    const handleGeneralSubmit = (FormData) => {
+        setGeneralData([...generalData, FormData])
+        setShowForm(true);
+    }  
+
     return (
         <>
 
@@ -13,7 +20,12 @@ function GeneralInfo() {
                     <h1>General Info</h1>
                 </div>
                 <div className="general-info-content-container">
-                    {!notShowing && Form()}
+                    {!notShowing && <Form handleSubmit={handleGeneralSubmit} />}
+                    {generalData.map((Data, index) => (
+                        <ul key={index}>
+                            <li>{Data}</li>
+                        </ul>
+                    ))}
                 </div>
                 <button onClick={() => setShowForm(!notShowing)}>Edit</button>
             </div>

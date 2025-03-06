@@ -1,32 +1,35 @@
-import { useState } from 'react'
-import '../styles/Form.css'
-// import PropTypes from 'prop-types';
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 
-function DisplayList({ items }) {
-    return (
-        <ul>
-            {items.map((item, index) => (
-                <li key={index}>{item}</li>
-            ))}
-        </ul>
-    );
-}
+function Form({ handleSubmit }) {
+    const [inputValue, setInputValue] = useState('')
 
-function Form() {
-    const [value, setValue] = useState('');
+    const handleInputChange = (e) => {
+        setInputValue(e.target.value)
+    }
+
+    const onSubmit = (e) => {
+        e.preventDefault()
+        handleSubmit(inputValue)
+        setInputValue('')
+    }
+
     return (
-        <>
-            <form action="post">
-                <div className="input-container">
-                    <label>Add Education</label>
-                    <input type="text" 
-                        value={value}
-                    />
-                    <button className='submit' onClick={DisplayList(e.target.value)}>Submit</button>
-                </div>
-            </form> 
-        </>
+        <form onSubmit={onSubmit}>
+            <div className="input-container">
+                <input 
+                    type="text" 
+                    value={inputValue} 
+                    onChange={handleInputChange} 
+                />
+            </div>
+            <button type="submit">Submit</button>
+        </form>
     )
-
 }
+
+Form.propTypes = {
+    handleSubmit: PropTypes.func.isRequired,
+}
+
 export default Form
